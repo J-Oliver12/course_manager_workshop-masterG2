@@ -19,7 +19,7 @@ public class StudentCollectionRepository implements StudentDao {
 
     @Override
     public Student createStudent(String name, String email, String address) {
-        Student newStudent = new Student(name, email, address);                                     // Create a new student object and generates ID
+        Student newStudent = new Student(StudentSequencer.nextStudentId(), name, email, address);   // Create a new student object and generates ID
         students.add(newStudent);                                                                   // Add the new student to the collection
         return newStudent;                                                                          // Return the created student object
     }

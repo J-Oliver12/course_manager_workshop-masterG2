@@ -1,6 +1,5 @@
 package se.lexicon.course_manager_assignment.model;
 
-import se.lexicon.course_manager_assignment.data.sequencers.CourseSequencer;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -10,7 +9,7 @@ import java.util.Set;
 
 public class Course implements Serializable {
 
-    private final int id;
+    private int id;
     private String courseName;
     private LocalDate startDate;
     private int weekDuration;
@@ -18,7 +17,6 @@ public class Course implements Serializable {
 
 
     public Course(String courseName, LocalDate startDate, int weekDuration) {
-        this.id = CourseSequencer.nextCourseId();                                  //Generate the next course ID
         this.courseName = courseName;
         this.startDate = startDate;
         this.weekDuration = weekDuration;
@@ -26,7 +24,7 @@ public class Course implements Serializable {
     }
 
     public Course(int id, String courseName, LocalDate startDate, int weekDuration) {
-        this.id = id;                                                               // Constructor with ID for internal use
+        this.id = id;                                                                    // Constructor with ID for internal use
         this.courseName = courseName;
         this.startDate = startDate;
         this.weekDuration = weekDuration;
@@ -74,6 +72,7 @@ public class Course implements Serializable {
     public boolean enrollStudent(Student student) {
         return students.add(student);
     }
+
     public boolean unEnrollStudent(Student student) {
         return students.remove(student);
     }
